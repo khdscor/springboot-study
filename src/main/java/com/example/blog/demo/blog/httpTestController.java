@@ -8,8 +8,7 @@ public class httpTestController {
     private static final String TAG="HttpControllerTest:";
 
     @GetMapping("test/lombok")
-  public String lomboktest(){
-      Member_test m= new Member_test(1,"khds","dsadrd","dsadas");
+  public String lomboktest(Member_test m){
       System.out.println(TAG+"getter"+m.getId());
       m.setId(5010110);
       System.out.println(TAG+"getter"+m.getId());
@@ -30,6 +29,11 @@ public class httpTestController {
         return "get 요청"+m.getId()+" "+ m.getUsername();
     }
 
+    @GetMapping("http/get3")
+    public int get3Test(){
+        Member_test m2=new Member_test().builder().id(2).build();
+        return m2.getId();
+    }
 
     @PostMapping("http/post")
     public String postTest(){
